@@ -16,19 +16,34 @@ class BankAccount:
     def __eq__(self, other):
         return True if self._account_number == other._account_number else False
 
-    # def __str__(self):
-    #     return f"""
-    #     Bank Account:
-    #         Account Owner: {self._owner}
-    #         Account Number: {self._account_number}
-    #         Current Balance: {self._balance}
-    #     """
+    def __str__(self):
+        return f"""
+        Bank Account:
+            Account Owner: {self._owner}
+            Account Number: {self._account_number}
+            Current Balance: {self._balance}
+        """
 
     def __repr__(self):
         return f"BankAccount(owner='{self._owner}', " \
                f"account_number={self._account_number}, " \
                f"balance={self._balance})"
 
+    def __getitem__(self, key):
+        return getattr(self, key)
+
 a = BankAccount('Bipin',123,200)
-print(a)
-print(a._owner)
+print(str(a))
+print(repr(a))
+print(a["_owner"])
+
+"""
+Output:
+        Bank Account:
+            Account Owner: Bipin
+            Account Number: 123
+            Current Balance: 200
+        
+BankAccount(owner='Bipin', account_number=123, balance=200)
+Bipin
+"""
